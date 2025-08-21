@@ -5,18 +5,21 @@ Este repositorio contiene el código fuente de un proyecto de prueba técnica de
 
 
 ## Enfoque
+
 Este proyecto ha sido diseñado y desarrollado siguiendo los principios de Clean Architecture, con el objetivo de establecer una base de código limpia, robusta y escalable.
 
 Desde el inicio, el enfoque principal fue ir más allá de la simple funcionalidad para demostrar cómo un diseño bien pensado puede hacer que un proyecto sea fácil de mantener y reutilizable. Esto se logró priorizando la separación de responsabilidades, lo que asegura que cada componente del sistema tenga un propósito claro.
 
-Aunque se trata de una aplicación de pequeña escala, la arquitectura implementada la convierte en una solución sólida. 
+Aunque se trata de una aplicación de pequeña escala, la arquitectura implementada la convierte en una solución sólida.
+
+
 ### Instalación
 
 Sigue estos pasos para configurar el entorno de desarrollo:
 
 1.  **Clona el repositorio:**
     ```sh
-    git clone <URL-del-repositorio>
+    git clone https://github.com/danielperez1234/aplazo_pt.git
     ```
 
 2.  **Navega al directorio del proyecto:**
@@ -35,6 +38,8 @@ Sigue estos pasos para configurar el entorno de desarrollo:
     ```sh
     flutter run
     ```
+
+
 ### Unit test
 
 1.  **Construir clases moc**
@@ -46,7 +51,7 @@ Sigue estos pasos para configurar el entorno de desarrollo:
 
 ---
 
-## ✨ Autor
+## Autor
 
 *   **Daniel Perez** 
 
