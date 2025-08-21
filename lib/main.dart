@@ -1,6 +1,9 @@
+import 'package:aplazo_pt/core/injection/injection_container.dart';
+import 'package:aplazo_pt/features/serch_by_name/presentation/pages/search_by_name_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  initInjection();
   runApp(const MainApp());
 }
 
@@ -9,12 +12,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
+    return const MaterialApp(home: SearchByNamePage());
   }
 }
