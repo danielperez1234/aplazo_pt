@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../domain/usecases/get_categories.dart';
 import '../../../domain/usecases/get_meals_by_category.dart';
-import 'home_list_item.dart';
+import '../../../domain/entities/home_list_item.dart';
 import '../../../domain/entities/meals_search_by_category.dart';
 
 part 'home_event.dart';
@@ -35,7 +35,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     GetMealsByCategoryEvent event,
     Emitter<HomeState> emit,
   ) async {
-    emit(HomeLoading(items: _generateItemsFromData()));
+    emit(HomeLoading(items: state.items));
     final result = await _getMealsByCategoryUseCase(event.category);
 
     result.fold(

@@ -18,9 +18,9 @@ class MealsSearchByNameImage extends Equatable {
   final String baseUrl;
 
   const MealsSearchByNameImage(this.baseUrl);
-  String? get small => '$baseUrl/small';
-  String? get medium => '$baseUrl/medium';
-  String? get large => '$baseUrl/large';
+  String get small => '$baseUrl/small';
+  String get medium => '$baseUrl/medium';
+  String get large => '$baseUrl/large';
 
   @override
   List<Object?> get props => [baseUrl];

@@ -14,8 +14,8 @@ abstract class HomeRemoteDataSource {
   ResultFuture<List<String>> getCategories();
 }
 
-class MealsByCategoryRemoteDataSourceImpl implements HomeRemoteDataSource {
-  const MealsByCategoryRemoteDataSourceImpl(this._dio);
+class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
+  const HomeRemoteDataSourceImpl(this._dio);
 
   final Dio _dio;
 

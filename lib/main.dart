@@ -1,4 +1,5 @@
 import 'package:aplazo_pt/core/injection/injection_container.dart';
+import 'package:aplazo_pt/features/home/presentation/pages/home_page.dart';
 import 'package:aplazo_pt/features/serch_by_name/presentation/pages/search_by_name_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: SearchByNamePage());
+    return MaterialApp(
+      home: HomePage(),
+      routes: {'/search': (context) => const SearchByNamePage()},
+    );
   }
 }
