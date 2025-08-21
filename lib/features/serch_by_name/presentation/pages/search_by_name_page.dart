@@ -1,3 +1,5 @@
+import 'package:aplazo_pt/core/widgets/app_error_screen.dart';
+import 'package:aplazo_pt/core/widgets/app_meal_tile.dart';
 import 'package:aplazo_pt/features/serch_by_name/presentation/bloc/search_by_name_bloc/search_by_name_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,29 +67,32 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
                       return const Center(child: CircularProgressIndicator());
                     } else if (state is SearchByNameLoaded) {
                       if (state.meals.isEmpty) {
-                        return const Center(child: Text('No meals found'));
+                        return AppErrorScreen(
+                          message: 'No meals found',
+                          onRetry: () => context.read<SearchByNameBloc>().add(
+                            GetMealsByNameEvent(_searchController.text),
+                          ),
+                        );
                       } else {
                         return ListView.builder(
                           itemCount: state.meals.length,
                           itemBuilder: (context, index) {
                             final meal = state.meals[index];
-                            return ListTile(
-                              title: Text(meal.name ?? ''),
-                              leading: meal.image != null
-                                  ? Image.network(meal.image!.small!)
-                                  : null,
+                            return AppMealTile(
+                              name: meal.name,
+                              image: meal.image?.small,
                             );
                           },
                         );
                       }
                     } else if (state is SearchByNameError) {
-                      return Center(child: Text(state.message));
+                      return AppErrorScreen(message: state.message);
                     } else if (state is SearchByNameInitial) {
                       return const Center(
-                        child: Text('Search for meals by typing a letter'),
+                        child: Text('Utiliza el buscador para ver los menús.'),
                       );
                     }
-                    return const Center(child: Text('Something went wrong!'));
+                    return AppErrorScreen(message: 'Algo salió mal.');
                   },
                 ),
               ),

@@ -8,9 +8,10 @@ class AppMealTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: image != null
-          ? CircleAvatar(backgroundImage: NetworkImage(image!))
-          : null,
+      leading: CircleAvatar(
+        backgroundColor: Theme.of(context).primaryColor,
+        backgroundImage: image == null ? null : NetworkImage(image!),
+      ),
       title: Text(name ?? 'Unknown name'),
     );
   }

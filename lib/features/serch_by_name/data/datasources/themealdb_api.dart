@@ -25,9 +25,9 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
         'https://www.themealdb.com/api/json/v1/1/search.php?s=$char',
       );
 
-      if (response.statusCode != 200) {
+      if (response.data['meals'] == null || response.data['meals'] is String) {
         throw ApiFailure(
-          message: response.data['message'] ?? 'Error desconocido',
+          message: response.data['meals'] ?? 'No se encontraron menús',
           statusCode: response.statusCode ?? 500,
         );
       }
@@ -39,13 +39,7 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
       return right(meals);
     } on ApiFailure catch (e) {
       log(e.message.toString());
-      return left(
-        ApiFailure(
-          message:
-              "No se logró conseguir tus menús, intenta de nuevo más tarde.",
-          statusCode: e.statusCode,
-        ),
-      );
+      return left(e);
     } on DioException catch (e) {
       log(e.message.toString());
       return left(

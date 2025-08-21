@@ -17,5 +17,5 @@ Future<void> searchByNameInjection(GetIt sl) async {
     ..registerLazySingleton<GetMealsByCharUseCase>(
       () => GetMealsByCharUseCase(sl<SearchByNameRepository>()),
     )
-    ..registerLazySingleton<SearchByNameBloc>(() => SearchByNameBloc(sl()));
+    ..registerFactory<SearchByNameBloc>(() => SearchByNameBloc(sl()));
 }
