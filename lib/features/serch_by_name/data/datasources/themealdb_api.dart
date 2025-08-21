@@ -22,7 +22,7 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
     try {
       print('https://www.themealdb.com/api/json/v1/1/search.php?s=$char');
       final response = await _dio.get(
-        'https://www.themealdb.com/api/json/v1/1/search.php?f=$char',
+        'https://www.themealdb.com/api/json/v1/1/search.php?s=$char',
       );
 
       if (response.statusCode != 200) {
