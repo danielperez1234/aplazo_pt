@@ -34,8 +34,11 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  ResultFuture<List<String>> getCategories(String char) {
-    // TODO: implement getCategories
-    throw UnimplementedError();
+  ResultFuture<List<String>> getCategories() async {
+    final result = await _remoteDataSource.getCategories();
+    return result.fold(
+      (failure) => Left(failure),
+      (categories) => Right(categories),
+    );
   }
 }

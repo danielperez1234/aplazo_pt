@@ -25,7 +25,7 @@ class MealsByCategoryRemoteDataSourceImpl implements HomeRemoteDataSource {
   ) async {
     try {
       final response = await _dio.get(
-        'www.themealdb.com/api/json/v1/1/filter.php?c=$category',
+        'https://www.themealdb.com/api/json/v1/1/filter.php?c=$category',
       );
 
       if (response.statusCode != 200) {
@@ -77,10 +77,11 @@ class MealsByCategoryRemoteDataSourceImpl implements HomeRemoteDataSource {
       }
       log(response.data.toString());
       final json = response.data;
-      final List<String> categories = json["meals"]
-          .map((element) => Meal.fromJson(element["strCategory"]))
+      final List<dynamic> mealsJson = json['meals'] ?? [];
+      final categories = mealsJson
+          .map((e) => e['strCategory'] as String)
           .toList();
-      return right(categories);
+      return Right(categories);
     } on ApiFailure catch (e) {
       log(e.message.toString());
       return left(

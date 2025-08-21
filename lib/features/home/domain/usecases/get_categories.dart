@@ -3,14 +3,13 @@ import 'package:aplazo_pt/core/utils/typedefs.dart';
 
 import '../repositories/home_repository.dart';
 
-class GetMealsByCategoryUseCase
-    implements UseCaseWithParams<List<String>, String> {
+class GetCategoriesUseCase implements UseCaseWithoutParams<List<String>> {
   final HomeRepository _homeRepository;
 
-  GetMealsByCategoryUseCase(this._homeRepository);
+  GetCategoriesUseCase(this._homeRepository);
 
   @override
-  ResultFuture<List<String>> call(String params) async {
-    return await _homeRepository.getCategories(params);
+  ResultFuture<List<String>> call() async {
+    return await _homeRepository.getCategories();
   }
 }
