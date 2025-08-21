@@ -41,7 +41,7 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
                           final char = _searchController.text.trim();
                           if (char.isNotEmpty) {
                             context.read<SearchByNameBloc>().add(
-                              GetMealsByNameEvent(char.substring(0, 1)),
+                              GetMealsByNameEvent(char),
                             );
                           }
                         },
@@ -50,7 +50,7 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
                     onSubmitted: (char) {
                       if (char.isNotEmpty) {
                         context.read<SearchByNameBloc>().add(
-                          GetMealsByNameEvent(char.substring(0, 1)),
+                          GetMealsByNameEvent(char),
                         );
                       }
                     },
