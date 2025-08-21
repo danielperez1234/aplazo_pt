@@ -5,12 +5,12 @@ import 'package:aplazo_pt/features/serch_by_name/domain/repositories/search_by_n
 
 class GetMealsByCharUseCase
     implements UseCaseWithParams<List<MealsSearchByName>, String> {
-  final SearchByNameRepository _search_by_nameRepository;
+  final SearchByNameRepository _searchByNameRepository;
 
-  GetMealsByCharUseCase(this._search_by_nameRepository);
+  GetMealsByCharUseCase(this._searchByNameRepository);
 
   @override
   ResultFuture<List<MealsSearchByName>> call(String params) async {
-    return await _search_by_nameRepository.getMealsByChar(params);
+    return await _searchByNameRepository.getMealsByChar(params);
   }
 }
