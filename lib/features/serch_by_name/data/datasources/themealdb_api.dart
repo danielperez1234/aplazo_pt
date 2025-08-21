@@ -20,7 +20,7 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
   @override
   ResultFuture<GetMealsByNameResponse> getMealsByChar(String char) async {
     try {
-      print('https://www.themealdb.com/api/json/v1/1/search.php?s=$char');
+      log('https://www.themealdb.com/api/json/v1/1/search.php?s=$char');
       final response = await _dio.get(
         'https://www.themealdb.com/api/json/v1/1/search.php?s=$char',
       );
