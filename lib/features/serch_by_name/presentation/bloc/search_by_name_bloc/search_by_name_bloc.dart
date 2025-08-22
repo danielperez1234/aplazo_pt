@@ -16,11 +16,15 @@ class SearchByNameBloc extends Bloc<SearchByNameEvent, SearchByNameState> {
     GetMealsByNameEvent event,
     Emitter<SearchByNameState> emit,
   ) async {
-    emit(SearchByNameLoading());
-    final result = await _getMealsByCharUseCase(event.char);
-    result.fold(
-      (failure) => emit(SearchByNameError(failure.message)),
-      (meals) => emit(SearchByNameLoaded(meals)),
-    );
+    try {
+      emit(SearchByNameLoading());
+      final result = await _getMealsByCharUseCase(event.char);
+      result.fold(
+        (failure) => emit(SearchByNameError(failure.message)),
+        (meals) => emit(SearchByNameLoaded(meals)),
+      );
+    } catch (e) {
+      emit(SearchByNameError("Error en la busqueda"));
+    }
   }
 }

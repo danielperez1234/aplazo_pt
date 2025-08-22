@@ -54,13 +54,13 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
                         }),
                       ),
                     ),
-                    onSubmitted: (char) {
+                    onSubmitted: (char) => debouncer.run(() {
                       if (char.isNotEmpty) {
                         context.read<SearchByNameBloc>().add(
                           GetMealsByNameEvent(char),
                         );
                       }
-                    },
+                    }),
                   );
                 },
               ),

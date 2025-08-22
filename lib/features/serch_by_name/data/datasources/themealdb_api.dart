@@ -21,6 +21,7 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
       final response = await _dio.get(
         'https://www.themealdb.com/api/json/v1/1/search.php?s=$char',
       );
+      final json = response.data;
 
       if (response.data['meals'] == null || response.data['meals'] is String) {
         throw ApiFailure(
@@ -28,7 +29,6 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
           statusCode: response.statusCode ?? 500,
         );
       }
-      final json = response.data;
       final GetMealsByNameResponse meals = GetMealsByNameResponse.fromJson(
         json,
       );
