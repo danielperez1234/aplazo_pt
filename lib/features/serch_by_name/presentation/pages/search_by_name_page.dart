@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../../core/utils/debouncer.dart';
+
 class SearchByNamePage extends StatefulWidget {
   const SearchByNamePage({super.key});
+  static const routeName = '/search-by-name';
 
   @override
   State<SearchByNamePage> createState() => _SearchByNamePageState();
@@ -14,9 +17,11 @@ class SearchByNamePage extends StatefulWidget {
 
 class _SearchByNamePageState extends State<SearchByNamePage> {
   final TextEditingController _searchController = TextEditingController();
+  final Debouncer debouncer = Debouncer(delay: Duration(milliseconds: 500));
 
   @override
   void dispose() {
+    debouncer.dispose();
     _searchController.dispose();
     super.dispose();
   }
@@ -39,14 +44,15 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
                       labelText: 'Search by first letter',
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.search),
-                        onPressed: () {
+                        onPressed: () => debouncer.run(() {
+                          print("called");
                           final char = _searchController.text.trim();
                           if (char.isNotEmpty) {
                             context.read<SearchByNameBloc>().add(
                               GetMealsByNameEvent(char),
                             );
                           }
-                        },
+                        }),
                       ),
                     ),
                     onSubmitted: (char) {
@@ -79,6 +85,7 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
                           itemBuilder: (context, index) {
                             final meal = state.meals[index];
                             return AppMealTile(
+                              id: meal.id,
                               name: meal.name,
                               image: meal.image?.small,
                             );

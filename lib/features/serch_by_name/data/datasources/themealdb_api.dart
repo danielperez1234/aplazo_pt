@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:aplazo_pt/core/errors/failure.dart';
 import 'package:aplazo_pt/core/utils/typedefs.dart';
 import 'package:aplazo_pt/features/serch_by_name/data/models/get_meals_response.dart';
@@ -20,7 +18,6 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
   @override
   ResultFuture<GetMealsByNameResponse> getMealsByChar(String char) async {
     try {
-      log('https://www.themealdb.com/api/json/v1/1/search.php?s=$char');
       final response = await _dio.get(
         'https://www.themealdb.com/api/json/v1/1/search.php?s=$char',
       );
@@ -31,17 +28,14 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
           statusCode: response.statusCode ?? 500,
         );
       }
-      log(response.data.toString());
       final json = response.data;
       final GetMealsByNameResponse meals = GetMealsByNameResponse.fromJson(
         json,
       );
       return right(meals);
     } on ApiFailure catch (e) {
-      log(e.message.toString());
       return left(e);
     } on DioException catch (e) {
-      log(e.message.toString());
       return left(
         ApiFailure(
           message: "No fue posible solicitar tus menús.",
@@ -49,7 +43,6 @@ class SearchByNameRemoteDataSourceImpl implements SearchByNameRemoteDataSource {
         ),
       );
     } catch (e) {
-      log(e.toString());
       return left(ApiFailure(message: "Errror de conexión.", statusCode: 500));
     }
   }
