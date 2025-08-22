@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:aplazo_pt/core/errors/failure.dart';
 import 'package:aplazo_pt/core/utils/typedefs.dart';
 import 'package:dartz/dartz.dart';
