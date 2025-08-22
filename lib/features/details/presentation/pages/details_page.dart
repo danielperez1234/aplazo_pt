@@ -47,12 +47,7 @@ class _DetailsView extends StatelessWidget {
           BlocBuilder<DetailsBloc, DetailsState>(
             builder: (context, state) {
               if (state is DetailsLoaded) {
-                return _FavouriteButton(
-                  isFav: BlocProvider.of<DetailsBloc>(
-                    context,
-                  ).mealsFav.contains(idMenu),
-                  state: state,
-                );
+                return _FavouriteButton(state: state);
               }
               return Container();
             },

@@ -19,7 +19,7 @@ class _DetailsLoadedView extends StatelessWidget {
                     bottom: Radius.circular(16),
                   ),
                   child: Image.network(
-                    meals.image?.small ?? '',
+                    meals.image?.large ?? '',
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) =>
                         const Icon(Icons.broken_image),

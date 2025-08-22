@@ -28,7 +28,6 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     final storage = await SharedPreferences.getInstance();
     mealsFav = storage.getStringList(StorageKeys.mealsFav) ?? [];
     final result = await _getMealDetailsUseCase(event.idMeal);
-    print(mealsFav);
     result.fold((failure) => emit(DetailsError(failure.message)), (meals) {
       emit(DetailsLoaded(meals));
     });
@@ -43,7 +42,6 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     } else {
       mealsFav.add(event.idMeal);
     }
-    print(mealsFav);
     final storage = await SharedPreferences.getInstance();
     storage.setStringList(StorageKeys.mealsFav, mealsFav);
   }
