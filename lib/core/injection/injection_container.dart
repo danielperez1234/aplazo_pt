@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:aplazo_pt/features/details/details_injection.dart';
 import 'package:aplazo_pt/features/serch_by_name/search_by_name_injection.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -16,4 +17,5 @@ Future<void> initInjection() async {
   searchByNameInjection(sl);
   log('Registering feature: home');
   homeInjection(sl);
+  detailsInjection(sl);
 }
