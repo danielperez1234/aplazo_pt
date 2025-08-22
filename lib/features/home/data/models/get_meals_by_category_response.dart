@@ -39,17 +39,17 @@ class Meal {
   factory Meal.fromJson(Map<String, dynamic> json) {
     List<Ingredient> ingredientsList = [];
     // Agregamos los ingredientes en una lista para un mejor manejo
-    for (int i = 1; i <= 20; i++) {
-      final ingredient = json['strIngredient$i'];
-      final measure = json['strMeasure$i'];
+    // for (int i = 1; i <= 20; i++) {
+    //   final ingredient = json['strIngredient$i'];
+    //   final measure = json['strMeasure$i'];
 
-      // paramos cuando esta vacio
-      if (ingredient == null || ingredient.trim().isEmpty) {
-        break;
-      }
+    //   // paramos cuando esta vacio
+    //   if (ingredient == null || ingredient.trim().isEmpty) {
+    //     break;
+    //   }
 
-      ingredientsList.add(Ingredient(name: ingredient, measure: measure ?? ''));
-    }
+    //   ingredientsList.add(Ingredient(name: ingredient, measure: measure ?? ''));
+    // }
 
     return Meal(
       id: json["idMeal"],
