@@ -3,7 +3,6 @@
 Este repositorio contiene el código fuente de un proyecto de prueba técnica desarrollado con Flutter. La aplicación está diseñada para ser multiplataforma, funcionando tanto en Android como en iOS desde una única base de código.
 
 
-
 ## Enfoque
 
 Este proyecto ha sido diseñado y desarrollado siguiendo los principios de Clean Architecture, con el objetivo de establecer una base de código limpia, robusta y escalable.
@@ -11,7 +10,6 @@ Este proyecto ha sido diseñado y desarrollado siguiendo los principios de Clean
 Desde el inicio, el enfoque principal fue ir más allá de la simple funcionalidad para demostrar cómo un diseño bien pensado puede hacer que un proyecto sea fácil de mantener y reutilizable. Esto se logró priorizando la separación de responsabilidades, lo que asegura que cada componente del sistema tenga un propósito claro.
 
 Aunque se trata de una aplicación de pequeña escala, la arquitectura implementada la convierte en una solución sólida.
-
 
 ### Instalación
 
@@ -50,6 +48,13 @@ Sigue estos pasos para configurar el entorno de desarrollo:
     ```
 
 ---
+
+## Consideraciones
+
+Durante el desarrollo de esta prueba técnica, el enfoque principal fue completar todas las actividades solicitadas, asegurando al mismo tiempo la entrega de un código bien estructurado y mantenible, siguiendo los principios de Clean Architecture mencionados anteriormente.
+
+mi experiencia actual. Si bien la automatización de pruebas es fundamental, decidí priorizar las áreas en las que ya tenía habilidades sólidas. Esto me permitió entregar un trabajo de alta calidad y, al mismo tiempo, me ha motivado a profundizar mis conocimientos en automatización para futuros proyectos.
+
 
 ## Autor
 
