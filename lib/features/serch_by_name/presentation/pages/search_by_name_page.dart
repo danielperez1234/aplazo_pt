@@ -31,7 +31,7 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
     return BlocProvider(
       create: (context) => GetIt.I<SearchByNameBloc>(),
       child: Scaffold(
-        appBar: AppBar(title: const Text('Meal Search')),
+        appBar: AppBar(title: const Text('Busqueda de menús')),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -41,11 +41,10 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
                   return TextField(
                     controller: _searchController,
                     decoration: InputDecoration(
-                      labelText: 'Search by first letter',
+                      labelText: 'Buscar por nombre',
                       suffixIcon: IconButton(
                         icon: const Icon(Icons.search),
                         onPressed: () => debouncer.run(() {
-                          print("called");
                           final char = _searchController.text.trim();
                           if (char.isNotEmpty) {
                             context.read<SearchByNameBloc>().add(
@@ -74,7 +73,7 @@ class _SearchByNamePageState extends State<SearchByNamePage> {
                     } else if (state is SearchByNameLoaded) {
                       if (state.meals.isEmpty) {
                         return AppErrorScreen(
-                          message: 'No meals found',
+                          message: 'No se encontraron menús',
                           onRetry: () => context.read<SearchByNameBloc>().add(
                             GetMealsByNameEvent(_searchController.text),
                           ),
