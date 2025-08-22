@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../core/widgets/app_meal_tile.dart';
+import '../../../serch_by_name/presentation/pages/search_by_name_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.search),
               onPressed: () {
-                Navigator.pushNamed(context, '/search');
+                Navigator.pushNamed(context, SearchByNamePage.routeName);
               },
             ),
           ],

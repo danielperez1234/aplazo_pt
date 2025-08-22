@@ -34,13 +34,11 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
           statusCode: response.statusCode ?? 500,
         );
       }
-      log(response.data.toString());
       final json = response.data;
       final GetMealsByCategoryResponse meals =
           GetMealsByCategoryResponse.fromJson(json);
       return right(meals);
     } on ApiFailure catch (e) {
-      log(e.message.toString());
       return left(
         ApiFailure(
           message:
@@ -49,7 +47,6 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         ),
       );
     } on DioException catch (e) {
-      log(e.message.toString());
       return left(
         ApiFailure(
           message: "No fue posible solicitar tus menús.",
@@ -57,7 +54,6 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         ),
       );
     } catch (e) {
-      log(e.toString());
       return left(ApiFailure(message: "Error de conexión.", statusCode: 500));
     }
   }
@@ -75,7 +71,6 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
           statusCode: response.statusCode ?? 500,
         );
       }
-      log(response.data.toString());
       final json = response.data;
       final List<dynamic> mealsJson = json['meals'] ?? [];
       final categories = mealsJson
@@ -83,7 +78,6 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
           .toList();
       return Right(categories);
     } on ApiFailure catch (e) {
-      log(e.message.toString());
       return left(
         ApiFailure(
           message:
@@ -92,7 +86,6 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         ),
       );
     } on DioException catch (e) {
-      log(e.message.toString());
       return left(
         ApiFailure(
           message: "No fue posible solicitar las categorias.",
@@ -100,7 +93,6 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
         ),
       );
     } catch (e) {
-      log(e.toString());
       return left(
         ApiFailure(
           message: "Errror de conexión con categorias.",
