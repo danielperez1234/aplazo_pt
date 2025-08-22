@@ -10,26 +10,33 @@ class _DetailsLoadedView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image.network(
-                  meals.image?.small ?? '',
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.broken_image),
+            SafeArea(
+              child: SizedBox(
+                width: double.infinity,
+                height: 250,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.vertical(
+                    bottom: Radius.circular(16),
+                  ),
+                  child: Image.network(
+                    meals.image?.small ?? '',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.broken_image),
+                  ),
                 ),
               ),
             ),
+            Divider(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                meals.instructions ?? 'No instructions provided.',
+                meals.instructions ?? 'Sin instrucciones.',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
             if (meals.ingredients.isNotEmpty) ...[
+              Divider(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(

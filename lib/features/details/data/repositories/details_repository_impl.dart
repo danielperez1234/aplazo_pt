@@ -17,7 +17,8 @@ class DetailsRepositoryImpl implements DetailsRepository {
       final meal = mealsResponse.meals.first;
       return Right(
         MealDetails(
-          id: meal.name,
+          name: meal.name,
+          id: meal.id,
           ingredients: meal.ingredients
               .map(
                 (element) =>

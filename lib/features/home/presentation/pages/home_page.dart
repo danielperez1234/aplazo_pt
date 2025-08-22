@@ -11,6 +11,7 @@ import '../../../serch_by_name/presentation/pages/search_by_name_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+  static const routeName = '/';
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,7 @@ class _HomeView extends StatelessWidget {
                   return AppMealTile(
                     name: item.meal.name,
                     image: item.meal.image?.small,
+                    id: item.meal.id,
                   );
                 }
                 return const SizedBox.shrink();

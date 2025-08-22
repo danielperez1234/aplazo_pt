@@ -1,3 +1,4 @@
+import 'package:aplazo_pt/core/utils/debouncer.dart';
 import 'package:aplazo_pt/core/widgets/app_error_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,7 @@ import '../../../../core/widgets/app_ingredient_tile.dart';
 import '../../domain/entities/meals_details_category.dart';
 import '../bloc/details_bloc/details_bloc.dart';
 part '../widgets/details_loaded_view.dart';
+part '../widgets/favourite_button.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({super.key});
@@ -36,12 +38,31 @@ class _DetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: Colors.white.withAlpha(200),
+
+        actions: [
+          BlocBuilder<DetailsBloc, DetailsState>(
+            builder: (context, state) {
+              if (state is DetailsLoaded) {
+                return _FavouriteButton(
+                  isFav: BlocProvider.of<DetailsBloc>(
+                    context,
+                  ).mealsFav.contains(idMenu),
+                  state: state,
+                );
+              }
+              return Container();
+            },
+          ),
+        ],
         title: BlocBuilder<DetailsBloc, DetailsState>(
           builder: (context, state) {
-            switch (state.runtimeType) {
+            switch (state) {
               case DetailsLoaded _:
-                return Text((state as DetailsLoaded).meals.name ?? 'unNamed');
+                return Text((state).meals.name ?? 'unNamed');
               case DetailsError _:
                 return Text("Error");
               case DetailsLoading _:

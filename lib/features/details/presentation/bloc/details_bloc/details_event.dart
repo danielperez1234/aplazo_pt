@@ -15,3 +15,12 @@ class GetMealDetailsEvent extends DetailsEvent {
   @override
   List<Object> get props => [idMeal];
 }
+
+class MealFavouritePressdEvent extends DetailsEvent {
+  final String idMeal;
+
+  const MealFavouritePressdEvent(this.idMeal);
+
+  @override
+  List<Object> get props => [idMeal];
+}
